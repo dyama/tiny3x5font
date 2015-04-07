@@ -1,15 +1,17 @@
 #include <stdio.h>
 /*
- * THIS CODE IS SAMPLE FOR TINY 3X5 FONT
- * BY DYAMA <DYAMA@MEMBER.FSF.ORG>
+ * This Code is Sample for Tiny 3x5 Font
+ * By dyama <dyama@member.fsf.org>
  */
 
 int fib(int k)
 {
-  if (k == 0)
+  if (k == 0) {
     return 0;
-  else if (k == 1)
+  }
+  else if (k == 1) {
     return 1;
+  }
   else if (k >= 2) {
     return fib(k-2) + fib(k-1);
   }

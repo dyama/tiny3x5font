@@ -1,13 +1,22 @@
 #!/usr/bin/ruby
 # coding: utf-8
 
-$font = File.open("../font/3x5.font").readlines.select{|n|n =~ /^[-\*]{3}$/}.map{|n|n.strip!;n.split(//)}
+$w=3
+$h=5
+
+$w=5
+$h=7
+
+$font = File.open("../font/#{$w}x#{$h}.font").readlines.select{|n|n =~ /^[-\*]{3,}$/}.map{|n|n.strip!;n.split(//)}
 
 def textline(text)
-  scr = [[], [], [], [], []]
+  scr = []
+  (1..$h).each do |x|
+    scr.push [] 
+  end
   text.split(//).each do |ch|
     c = ch.ord - " ".ord
-    $font[c*5, 5].each_with_index do |a, i|
+    $font[c*$h, $h].each_with_index do |a, i|
       a.each do |b|
         scr[i].push b
       end
@@ -37,6 +46,7 @@ def hoge(text)
 end
 
 def ascii
+  s = ""
   n = 0
   (' '..'~').each do |c|
     if n != 0 && n % 16 == 0
@@ -45,12 +55,18 @@ def ascii
     s += c
     n += 1
   end
+  return s
 end
 
 s = ""
 
-STDIN.read.each_line do |t|
-  s += t
+if ARGV.size > 0
+  s += ascii
+else
+  STDIN.read.each_line do |t|
+    s += t
+  end
 end
+
 hoge s
 

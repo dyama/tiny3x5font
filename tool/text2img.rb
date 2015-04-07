@@ -5,7 +5,7 @@
 # with ImageMagick
 
 cmd = "convert"
-arg = "-size 256x128 xc:white"
+arg = "-size 256x256 xc:white"
 
 y=0
 STDIN.read.each_line do |ln|
